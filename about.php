@@ -14,16 +14,16 @@
     <body>
         <h1>Section Six Lab Island Mart</h1>
         <nav>
-            <a href="index.html" id="homepage">Home</a>
-            <a href="catalog.html">Catalog</a>
-            <a href="login.html">Login</a>
-            <a href="about.html">About Us</a> <!-- or maybe contacts? idk-->
-            <a href="cart.html">Cart</a>
+            <a href="index.php" id="homepage">Home</a>
+            <a href="catalog.php">Catalog</a>
+            <a href="login.php">Login</a>
+            <a href="about.php">About Us</a> <!-- or maybe contacts? idk-->
+            <a href="cart.php">Cart</a>
         </nav>
         
         <div>
             <p>
-                login
+                about
             </p>
         </div>
         
