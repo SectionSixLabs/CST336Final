@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,8 +16,6 @@
         
     </head>
     <body>
-<<<<<<< HEAD:index.ht
-=======
         <h1>Section Six Lab Island Mart</h1>
         <nav>
             <a href="index.php" id="homepage">Home</a>
@@ -30,6 +32,5 @@
         </div>
         
         <script src="js/js.js"></script>
->>>>>>> 1933b8b23288fa395863d9cdde38628eca88e016:cart.php
     </body>
 </html>
