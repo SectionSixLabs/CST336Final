@@ -12,7 +12,24 @@
         
     </head>
     <body>
-        <h1>Island Finder</h1>
-        <h4>Search and Select Your Very Own Island, For Purchase</h4>
+<<<<<<< HEAD:index.ht
+=======
+        <h1>Section Six Lab Island Mart</h1>
+        <nav>
+            <a href="index.php" id="homepage">Home</a>
+            <a href="catalog.php">Catalog</a>
+            <a href="login.php">Login</a>
+            <a href="about.php">About Us</a> <!-- or maybe contacts? idk-->
+            <a href="cart.php">Cart</a>
+        </nav>
+        
+        <div>
+            <p>
+                cart
+            </p>
+        </div>
+        
+        <script src="js/js.js"></script>
+>>>>>>> 1933b8b23288fa395863d9cdde38628eca88e016:cart.php
     </body>
 </html>
