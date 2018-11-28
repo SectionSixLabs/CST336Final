@@ -26,18 +26,18 @@
         $productDescription = $_GET['description'];
         $productImage = $_GET['productImage'];
         $productPrice = $_GET['price'];
-        $catId = $_GET['islandId'];
+        $islandId = $_GET['islandId'];
         
         $sql = "INSERT INTO is_product
                 ( productName, productDescription, productImage, price, islandId)
                 VALUES ( :productName, :productDescription, :productImage, :price, :islandId)";
                 
         $np = array(); // name parameters array
-        $np[':productName'] ="TEST1" /*$productName*/;
-        $np[':productDescription'] ="TEST1" /*$productDescription*/;
-        $np[':productImage'] = "sssssssssssssssssssssssssssssss"/*$productImage*/;
-        $np[':price'] =99.33 /*$productPrice*/;
-        $np[':islandId'] = 12/*$islandId*/;
+        $np[':productName'] =$productName;
+        $np[':productDescription'] =$productDescription;
+        $np[':productImage'] = $productImage;
+        $np[':price'] =$productPrice;
+        $np[':islandId'] = 1/*$islandId*/;
         
         $stmt = $conn->prepare($sql);
         $stmt->execute($np);
