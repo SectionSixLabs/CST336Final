@@ -37,7 +37,7 @@
         $np[':productDescription'] = $productDescription;
         $np[':productImage'] = $productImage;
         $np[':price'] = $productPrice;
-        $np[':catId'] = $islandId;
+        $np[':islandId'] = $islandId;
         
         $stmt = $conn->prepare($sql);
         $stmt->execute($np);
