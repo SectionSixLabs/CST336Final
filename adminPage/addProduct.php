@@ -42,7 +42,7 @@
         $stmt = $conn->prepare($sql);
         $stmt->execute($np);
         
-        header('Location:../admin.php');
+        //header('Location:../admin.php');
     }
 
 ?>
