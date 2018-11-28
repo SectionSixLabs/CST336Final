@@ -33,16 +33,16 @@
                 VALUES ( :productName, :productDescription, :productImage, :price, :islandId)";
                 
         $np = array(); // name parameters array
-        $np[':productName'] = $productName;
-        $np[':productDescription'] = $productDescription;
-        $np[':productImage'] = $productImage;
-        $np[':price'] = $productPrice;
-        $np[':islandId'] = $islandId;
+        $np[':productName'] ="TEST1" /*$productName*/;
+        $np[':productDescription'] ="TEST1" /*$productDescription*/;
+        $np[':productImage'] = "sssssssssssssssssssssssssssssss"/*$productImage*/;
+        $np[':price'] =99.33 /*$productPrice*/;
+        $np[':islandId'] = 12/*$islandId*/;
         
         $stmt = $conn->prepare($sql);
         $stmt->execute($np);
         
-        //header('Location:../admin.php');
+        header('Location:admin.php');
     }
 
 ?>
