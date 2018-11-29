@@ -27,32 +27,83 @@
 
 ?>
 
+
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
         <title>Admin Main Page</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+      	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+      	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> 
+      	<link href="css/styles.css" rel="stylesheet" type="text/css" />       
         <script>
+            $(document).ready(function(){
+                $("#getData").click(function(){
+                    $.ajax({
+                        type: "GET",
+                        url: "api/getAggInfo.php",
+                        dataType: "json",
+                        data: { "id" : "" },
+                        success: function(data,status) {
+                                $("#Agg").html("");
+                                $("#Agg").append("<strong>Total Books:</strong> " + data[0].totalBooks + "<br><br>");
+                                $("#Agg").append("<strong>Average Book Price:</strong>  $" + data[0].average + "<br><br>");
+                                $("#Agg").append("<strong>Max Book Price:</strong>  $" + data[0].max + "<br><br>");
+                                $("#Agg").append("<strong>Min Book Price:</strong>  $" + data[0].min + "<br><br>");
+                        }
+                    });
+                });
+            });
             function confirmDelete() {
-                return confirm("Are you sure you want to delete the product?");
+                
+                return confirm("Are you sure you want to delete the book?");
+                
             }
+            function confirmDelete2() {
+                
+                return confirm("Are you sure you want to delete the author?");
+                
+            }
+            function confirmDelete3() {
+                
+                return confirm("Are you sure you want to delete the author?");
+                
+            }
+            
         </script>
+        
     </head>
-    <body>
-        <h1>Admin Main Page - Island Store</h1>
-        
-        <h3>Welcome <?=$_SESSION['adminName']?>!</h3><br /><br />
-        
-        <form action="addProduct.php">
-            <input type="submit" class='btn btn=secondary' id="beginning" name="addProduct" value="Add Product" /> <br /><br />
-        </form>
-        
-        <form action="logout.php">
-            <input type="submit" class='btn btn-secondary' id="beginning" value="Logout"/>
-        </form>
-        
-        <?php
+    <body class = 'bg-info'>
+
+        <h1 class="display-3">Island Store | Admin Panel</h1>
+        <div class = "container">    
+            <h2 class = 'display-4' id = "welcome" ><strong> Welcome <?=$_SESSION['adminName']?>! </strong></h3>
+            
+            <br />
+            <form action="addProduct.php">
+                <input type="submit" class = 'btn btn-secondary' id = "beginning" name="addProduct" value="Add Product"/>
+            </form>
+            <br/>
+            <form action="addCategory.php">
+                <input type="submit" class = 'btn btn-secondary' id = "beginning" name="addCategory" value="Add Category"/>
+            </form>
+            <br/>
+            <form action="logout.php">
+                <input type="submit" class = 'btn btn-secondary' id = "beginning" value="Logout"/>
+            </form>
+            <br/>
+            <p>
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#bookTable" aria-expanded="false" aria-controls="bookTable">
+                Show Island Information
+            </button>
+            </p>
+            <div class="collapse" id="bookTable">
+                    <br /> <br />
+                    <h2 class = 'display-4' id = "welcome" > Islands </h3><br />
+                            <?php
             $records = displayAllProducts();
             
             echo "<table class='table table-hover'>";
@@ -74,7 +125,7 @@
                 echo "<td>" . $record['productName'] . "</td>";
                 echo "<td>" . $record['productDescription'] . "</td>";
                 echo "<td>" . $record['price'] . "</td>";
-                echo "<td><a class='btn btn-primary' href='updateProduct.php?productId=" . $records['productId'] . "'>Update</a></td>";
+                echo "<td><a class='btn btn-primary' href='updateProduct.php?productId=" . $record['productId'] . "'>Update</a></td>";
                 
                 echo "<form action='deleteProduct.php' onsubmit='return confirmDelete()'>";
                 echo "<input type='hidden' name='productId' value= '" . $record['productId'] . "'/>";
@@ -85,5 +136,11 @@
             echo "</table>";
         
         ?>
+            </div>
+            <div class="collapse" id="Agg">
+            </div>
+            
+            
+        </div>
     </body>
 </html>

@@ -16,7 +16,7 @@
                 WHERE productId = " . $_GET['productId'];
                 
         $stmt = $conn->prepare($sql);
-        /*$stmt->execute();*/
+        $stmt->execute();
         $record = $stmt->fetch(PDO::FETCH_ASSOC);
         
         return $record;
@@ -42,7 +42,7 @@
     if(isset($_GET['updateProduct'])) {
         
         $sql = "UPDATE is_product
-                SET productName = productName,
+                SET productName = :productName,
                     productDescription = :productDescription,
                     productImage = :productImage,
                     price = :price,
@@ -55,32 +55,53 @@
         $np[':price'] = $_GET['price'];
         $np[':islandId'] = $_GET['islandId'];
         $np[':productId'] = $_GET['productId'];
-        
-        $stmt = $conn->prepare($sql);
-/*        $stmt->execute($np)*/;
-        echo "Product has been updated!";
+
+        try {
+            $stmt = $conn->prepare($sql);
+            $stmt->execute($np);
+            echo "Product has been updated!";
+        } catch(PDOException $e) {
+            print('ERROR:'.$e->getMessage());
+            exit;
+        }
     }
 
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Update Product</title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <title>Update Product </title>
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
     </head>
-    <body>
-        
+    <body class = 'bg-info'>
+        <h1 class = 'display-3'>Update Product</h1>
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-md-8 offset-md-2">
         <form>
             <input  type="hidden" name="productId" value="<?=$product['productId']?>"/>
-            <strong>Product name</strong> <input type="text" class="form-control" name="productName" value="<?=$product['productName']?>"> <br /><br />
-            <strong>Description</strong> <textarea name="description" class="form-control" cols=50 rows = 4> <?=$product['productDescription']?></textarea> <br /><br />
-            <strong>Price</strong> <input type="text" class="form-control" name="price" value="<?=$product['price']?>"> <br /><br />
+            <strong>Product name</strong> <input type="text" class="form-control" name="productName" value="<?=$product['productName']?>"> <br />
+            <strong>Description</strong> <textarea name="description" class="form-control" cols=50 rows = 4> <?=$product['productDescription']?></textarea> <br />
+            <strong>Price</strong> <input type="text" class="form-control" name="price" value="<?=$product['price']?>"> <br />
             <strong>Category</strong> <select name="islandId" class="form-control">
                 <option value="">Select One</option>
                 <?php getCategories( $product['islandId']); ?>
-            </select> <br /><br />
-            <strong>Set Image Url</strong> <input type="text" name="productImage" value="<?=$product['productImage']?>" class="form-control"> <br /><br />
-            <input type="submit" name="updateProduct" class='btn btn-primary' value="Update Product"> <br /><br />
+            </select> <br />
+            <strong>Set Image Url</strong> <input type="text" name="productImage" value="<?=$product['productImage']?>" class="form-control"> <br />
+            <input type="submit" name="updateProduct" class='btn btn-primary' value="Update Product"> <br />
         </form>
 
+                    <form action="admin.php">
+                        <input type="submit" class = 'btn btn-secondary' id = "beginning" value="Back to Admin Panel"/>
+                    </form>
+            </div>
+        </div>
+    </div>
     </body>
 </html>

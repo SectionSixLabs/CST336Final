@@ -1,0 +1,54 @@
+[28-Nov-2018 19:48:39 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'islandStore'' in /home/ubuntu/workspace/finalproject/dbConnection.php:21
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/dbConnection.php(21): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 /home/ubuntu/workspace/finalproject/adminPage/loginProcess.php(6): getDatabaseConnection('islandStore')
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/dbConnection.php on line 21
+[28-Nov-2018 19:50:35 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'heroku_e30237eff3ac9ac'' in /home/ubuntu/workspace/finalproject/dbConnection.php:21
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/dbConnection.php(21): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 /home/ubuntu/workspace/finalproject/adminPage/loginProcess.php(6): getDatabaseConnection('heroku_e30237ef...')
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/dbConnection.php on line 21
+[28-Nov-2018 19:54:53 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'heroku_e30237eff3ac9ac'' in /home/ubuntu/workspace/finalproject/dbConnection.php:21
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/dbConnection.php(21): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 /home/ubuntu/workspace/finalproject/adminPage/loginProcess.php(6): getDatabaseConnection('heroku_e30237ef...')
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/dbConnection.php on line 21
+[28-Nov-2018 20:07:37 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'heroku_e30237eff3ac9ac'' in /home/ubuntu/workspace/finalproject/dbConnection.php:21
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/dbConnection.php(21): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 /home/ubuntu/workspace/finalproject/adminPage/loginProcess.php(6): getDatabaseConnection('heroku_e30237ef...')
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/dbConnection.php on line 21
+[28-Nov-2018 20:10:22 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1049] Unknown database 'islandStore'' in /home/ubuntu/workspace/finalproject/dbConnection.php:21
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/dbConnection.php(21): PDO->__construct('mysql:host=loca...', 'root', '')
+#1 /home/ubuntu/workspace/finalproject/adminPage/loginProcess.php(6): getDatabaseConnection('islandStore')
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/dbConnection.php on line 21
+[28-Nov-2018 23:54:18 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2' in /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php:19
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php(19): PDOStatement->execute()
+#1 /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php(9): getProductInfo()
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php on line 19
+[28-Nov-2018 23:55:43 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2' in /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php:19
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php(19): PDOStatement->execute()
+#1 /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php(9): getProductInfo()
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php on line 19
+[28-Nov-2018 23:56:22 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2' in /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php:19
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php(19): PDOStatement->execute()
+#1 /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php(9): getProductInfo()
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php on line 19
+[28-Nov-2018 23:57:30 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 2' in /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php:19
+Stack trace:
+#0 /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php(19): PDOStatement->execute()
+#1 /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php(9): getProductInfo()
+#2 {main}
+  thrown in /home/ubuntu/workspace/finalproject/adminPage/updateProduct.php on line 19

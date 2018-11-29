@@ -2,28 +2,23 @@
 
 function getDatabaseConnection($dbname = 'islandStore'){
     
-    //C9 db info
-    $host = "localhost";
-    //$dbname = 'tcp';
-    $username = 'root';
-    $password = '';
-    
-    // When connecting from heroku
-    if (strpos($_SERVER['HTTP_HOST'], 'herokuapp') != false) {
-        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-        $host = $url["host"];
-        $dbname = substr($url["path"], 1);
-        $username = $url["user"];
-        $password = $url["pass"];
-    }
-    
-    //creates db connection
-    $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    
-    // display errors when accessing tables
-    $dbConn -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    return $dbConn;
-}
+    // mysql://b2c39898989a45:2d0f1e07@us-cdbr-iron-east-01.cleardb.net/heroku_dac37addba7e971?reconnect=true
 
+    $host = "us-cdbr-iron-east-01.cleardb.net";
+    $username = "b4833a1ad5d926";
+    $password = "971f7f45";
+    $dbname = "heroku_e30237eff3ac9ac";
+    $charset = 'utf8mb4';
+    
+    try {
+            $dbconn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+            $dbconn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $dbconn;
+        } catch(PDOException $e) {
+            print('ERROR:'.$e->getMessage());
+            exit;
+    }
+    return $dbconn; 
+
+}
 ?>
