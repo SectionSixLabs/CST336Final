@@ -20,7 +20,7 @@
         <nav>
             <a href="index.php" id="homepage">Home</a>
             <a href="catalog.php">Catalog</a>
-            <a href="login.php">Login</a>
+            <a href="adminPage/login.php">AdminLogin</a>
             <a href="about.php">About Us</a> <!-- or maybe contacts? idk-->
             <a href="cart.php">Cart</a>
         </nav>
