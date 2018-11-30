@@ -26,23 +26,23 @@
         $productDescription = $_GET['description'];
         $productImage = $_GET['productImage'];
         $productPrice = $_GET['price'];
-        $catId = $_GET['islandId'];
+        $islandId = $_GET['islandId'];
         
         $sql = "INSERT INTO is_product
                 ( productName, productDescription, productImage, price, islandId)
                 VALUES ( :productName, :productDescription, :productImage, :price, :islandId)";
                 
         $np = array(); // name parameters array
-        $np[':productName'] = $productName;
-        $np[':productDescription'] = $productDescription;
+        $np[':productName'] =$productName;
+        $np[':productDescription'] =$productDescription;
         $np[':productImage'] = $productImage;
-        $np[':price'] = $productPrice;
-        $np[':islandId'] = $islandId;
+        $np[':price'] =$productPrice;
+        $np[':islandId'] = 1/*$islandId*/;
         
         $stmt = $conn->prepare($sql);
         $stmt->execute($np);
         
-        //header('Location:../admin.php');
+        header('Location:admin.php');
     }
 
 ?>
