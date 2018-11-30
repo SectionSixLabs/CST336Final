@@ -26,9 +26,12 @@
         </nav>
         
         <div>
-            <p>
-                about
-            </p>
+            
+                <h2>Section Six Labs</h2>
+                <h3>Sergiy</h3>
+                <h3>Lacey</h3>
+                <h3>Hisako</h3>
+                <h3>Danny</h3>
         </div>
         
         <script src="js/js.js"></script>

@@ -26,9 +26,25 @@
         </nav>
         
         <div>
-            <p>
-                catalog
-            </p>
+            <h3>Island Shopper</h3>
+        </div>
+        
+        <div>
+            <form>
+                Product: <input type="text" name="product" />
+                <br>
+                Price: From <input type="text" name="priceFrom" size="7"/>
+                        To  <input type="text" name="priceTo" size="7"/>
+                <br>
+                Order result by:
+                <br>
+                
+                <input type="radio" name="orderBy" value="price"/>Price <br>
+                <input type="radio" name="orderBy" value="name"/>Name
+                <br><br>
+                
+                <input type="submit" value="Search"searchForm" />
+            </form>
         </div>
         
         <script src="js/js.js"></script>
