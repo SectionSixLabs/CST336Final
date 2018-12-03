@@ -1,5 +1,37 @@
 <?php
 
+include 'dbConnection.php';
+
+$conn = getDatabaseConnection('islandStore');
+
+function displaySearchResults() {
+    global $conn;
+    
+    if(isset($_GET['searchForm'])) { //check if user has submitted form
+        echo "<h3>Products Found: </h3>";
+        
+        $namedParameters = array();
+        
+        $sql = "SELECT * FROM is_product where 1";
+
+        if(!empty($_GET['product'])) {
+            $sql .=" AND productName LIKE :productName";
+            $namedParameters[":productName"] = "%" . $_GET['product'] . "%";
+            
+
+        }
+        
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($namedParameters);
+        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            
+        foreach($records as $record) {
+            echo $record["productName"] . " " . $record["productDescription"] . " $" . $record["price"] . "<br /><br />";
+        }
+       
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -43,8 +75,13 @@
                 <input type="radio" name="orderBy" value="name"/>Name
                 <br><br>
                 
-                <input type="submit" value="Search"searchForm" />
+                <input type="submit" value="Search" name="searchForm" />
             </form>
+        </div>
+        
+        <hr>
+        <div>
+        <?= displaySearchResults() ?>
         </div>
         
         <script src="js/js.js"></script>
