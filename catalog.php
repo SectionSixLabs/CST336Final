@@ -1,8 +1,27 @@
 <?php
-
+session_start();
 include 'dbConnection.php';
 
 $conn = getDatabaseConnection('islandStore');
+
+if(!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = array();
+    }
+    
+//check to see if an item has been added to the cart
+if(isset($_POST['productName'])) {
+    
+    //creating an array to hold an items properties
+    $newItem = array();
+    $newItem['productName'] = $_POST['productName'];
+    $newItem['price'] = $_POST['price'];
+    
+    //can't have multiple of same island
+    //is there a need to check cart for multiples of same island?
+    $newItem['quantity'] = 1;
+    array_push($_SESSION['cart'], $newItem);
+        
+}
 
 function displaySearchResults() {
     global $conn;
@@ -43,10 +62,28 @@ function displaySearchResults() {
         
         //echo "<div>$sql</div>";
         
+        echo "<table class='table'>";
+        
         foreach($records as $record) {
+            echo "<tr>";
+            echo "<td>";
             echo $record["productName"] . " " . $record["productDescription"] . " $" . $record["price"] . "<br /><br />";
+            echo "</td>";
+            
+            $productName = $record["productName"];
+            $price = $record["price"];
+            
+            echo "<td>";
+            //hidden input element containing item 
+            echo "<form method='post'>";
+            echo "<input type='hidden' name='productName' value='$productName'>";
+            echo "<input type='hidden' name='price' value='$price'>";
+            
+            echo '<button class="btn btn-success">Added</button>';
+            echo "</td>";
+            echo "</tr>";
         }
-       
+        echo "</table>";
     }
 }
 
