@@ -17,14 +17,32 @@ function displaySearchResults() {
         if(!empty($_GET['product'])) {
             $sql .=" AND productName LIKE :productName";
             $namedParameters[":productName"] = "%" . $_GET['product'] . "%";
-            
-
+        }
+        
+        if(!empty($_GET['priceFrom'])) { //check "Price from" text box
+            $sql .= " AND price >= :priceFrom";
+            $namedParameters[":priceFrom"] = $_GET['priceFrom'];
+        }
+        
+        if(!empty($_GET['priceTo'])) { //check "Price to" text box
+            $sql .= " AND price <= :priceTo";
+            $namedParameters[":priceTo"] = $_GET['priceTo'];
+        }
+        
+        if(isset($_GET['orderBy'])) {
+            if($_GET['orderBy'] == "price") {
+                $sql .= " ORDER BY price";
+            } else {
+                $sql .= " ORDER BY productName";
+            }
         }
         
         $stmt = $conn->prepare($sql);
         $stmt->execute($namedParameters);
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
+        
+        //echo "<div>$sql</div>";
+        
         foreach($records as $record) {
             echo $record["productName"] . " " . $record["productDescription"] . " $" . $record["price"] . "<br /><br />";
         }
