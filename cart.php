@@ -33,7 +33,7 @@ function displayCart() {
     //If 'removeId' has been sent, search the cart for that productName and unset it
     if(isset($_POST['removeId'])) {
         foreach($_SESSION['cart'] as $itemKey => $item) {
-            if($item['productName'] == $_POST['removeId']) {
+            if($item['productName'] == $_POST['productName']) {
                 unset($_SESSION['cart'][$productName]);
             }
         }

@@ -65,14 +65,14 @@ function displaySearchResults() {
         echo "<table class='table'>";
         
         foreach($records as $record) {
-            echo "<tr>";
-            echo "<td>";
-            echo $record["productName"] . " " . $record["productDescription"] . " $" . $record["price"] . "<br /><br />";
-            echo "</td>";
-            
             $productName = $record["productName"];
             $price = $record["price"];
-            
+        
+            echo "<tr>";
+            echo "<td>";
+            echo $productName . " " . $record["productDescription"] . " $" . $price . "<br /><br />";
+            echo "</td>";
+        
             echo "<td>";
             //hidden input element containing item 
             echo "<form method='post'>";
