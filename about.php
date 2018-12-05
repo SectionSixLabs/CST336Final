@@ -20,15 +20,18 @@
         <nav>
             <a href="index.php" id="homepage">Home</a>
             <a href="catalog.php">Catalog</a>
-            <a href="login.php">Login</a>
+            <a href="adminPage/login.php">AdminLogin</a>
             <a href="about.php">About Us</a> <!-- or maybe contacts? idk-->
             <a href="cart.php">Cart</a>
         </nav>
         
         <div>
-            <p>
-                about
-            </p>
+            
+                <h2>Section Six Labs</h2>
+                <h3>Sergiy</h3>
+                <h3>Lacey</h3>
+                <h3>Hisako</h3>
+                <h3>Danny</h3>
         </div>
         
         <script src="js/js.js"></script>

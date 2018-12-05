@@ -5,10 +5,6 @@
     
     $conn = getDatabaseConnection("islandStore");
     
-    if (isset ($_GET['productId'])) {
-        $product = getProductInfo();
-    }
-    
     function getProductInfo() {
         global $conn;
         
@@ -37,6 +33,10 @@
             echo ($record['islandId'] == $islandId)?"selected": "";
             echo " value='". $record['islandId'] . "'>" . $record['islandName'] . " </option>";
         }
+    }
+
+    if (isset ($_GET['productId'])) {
+        $product = getProductInfo();
     }
     
     if(isset($_GET['updateProduct'])) {
