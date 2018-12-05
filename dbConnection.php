@@ -1,14 +1,25 @@
 <?php
-
-function getDatabaseConnection($dbname = 'islandStore'){
+function getDatabaseConnection($dbname = 'heroku_dac37addba7e971') {
+    $host = 'localhost';
     
-    // mysql://b2c39898989a45:2d0f1e07@us-cdbr-iron-east-01.cleardb.net/heroku_dac37addba7e971?reconnect=true
-
-    $host = "us-cdbr-iron-east-01.cleardb.net";
-    $username = "b4833a1ad5d926";
-    $password = "971f7f45";
-    $dbname = "heroku_e30237eff3ac9ac";
-    $charset = 'utf8mb4';
+    $username = 'root';
+    $password = '';
+    
+    // when connecting from Heroku
+    if  (strpos($_SERVER['HTTP_HOST'], 'herokuapp') != false) {
+        $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+        $host = $url["host"];
+        $dbname = substr($url["path"], 1);
+        $username = $url["user"];
+        $password = $url["pass"];
+    } else {
+    // when connecting from test env
+        $host = "us-cdbr-iron-east-01.cleardb.net";
+        $username = "b2c39898989a45";
+        $password = "2d0f1e07";
+        $dbname = "heroku_dac37addba7e971";
+        $charset = 'utf8mb4';
+    }
     
     try {
             $dbconn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -18,7 +29,6 @@ function getDatabaseConnection($dbname = 'islandStore'){
             print('ERROR:'.$e->getMessage());
             exit;
     }
-    return $dbconn; 
-
+    return $dbconn;
 }
 ?>
