@@ -79,7 +79,7 @@ function displaySearchResults() {
             echo "<input type='hidden' name='productName' value='$productName'>";
             echo "<input type='hidden' name='price' value='$price'>";
             
-            echo '<button class="btn btn-success">Added</button>';
+            echo '<button class="btn btn-success">Add</button>';
             echo "</td>";
             echo "</tr>";
         }
