@@ -1,5 +1,5 @@
 <?php
-function getDatabaseConnection($dbname = 'heroku_dac37addba7e971') {
+function getDatabaseConnection($dbname = 'heroku_e30237eff3ac9ac') {
     $host = 'localhost';
     
     $username = 'root';
@@ -15,9 +15,9 @@ function getDatabaseConnection($dbname = 'heroku_dac37addba7e971') {
     } else {
     // when connecting from test env
         $host = "us-cdbr-iron-east-01.cleardb.net";
-        $username = "b2c39898989a45";
-        $password = "2d0f1e07";
-        $dbname = "heroku_dac37addba7e971";
+        $username = "b4833a1ad5d926";
+        $password = "971f7f45";
+        $dbname = "heroku_e30237eff3ac9ac";
         $charset = 'utf8mb4';
     }
     
