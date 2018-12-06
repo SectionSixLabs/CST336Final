@@ -13,7 +13,7 @@ function getDatabaseConnection($dbname = 'heroku_e30237eff3ac9ac') {
         $username = $url["user"];
         $password = $url["pass"];
     } else {
-    // when connecting from test env 
+    // when connecting from test env
         $host = "us-cdbr-iron-east-01.cleardb.net";
         $username = "b4833a1ad5d926";
         $password = "971f7f45";
