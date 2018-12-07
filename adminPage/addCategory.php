@@ -78,7 +78,7 @@
             <div class = "row">
                 <div class = "col-md-8 offset-md-2">
         <form>
-            <strong>Category name</strong> <input type="text" class="form-control" name="productName"> <br /><br />
+            <strong>Category name</strong> <input type="text" class="form-control" name="categoryName"> <br /><br />
             <strong>Category Description</strong> <textarea name="description" class="form-control" cols=50 rows = 4></textarea> <br /><br />
             <input type="submit" name="submitCategory" class='btn btn-primary' value="Add Category"> <br /><br />
         </form>
