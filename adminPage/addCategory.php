@@ -87,6 +87,7 @@
                         <input type="submit" class = 'btn btn-secondary' id = "beginning" value="Back to Admin Panel"/>
                     </form>
             </div>
+            <?php getCategories() ?>
         </div>
     </body>
 </html>
