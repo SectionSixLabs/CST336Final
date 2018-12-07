@@ -198,8 +198,8 @@ function displaySearchResults() {
                 </div>
                 <label for="bName"><strong>Region</strong> </label><br />
                 <select class="custom-select" name="genres">
-                    <option value=""> Select One </option>
-                    <option value='7' >Children's Book</option><option value='5' >Comics & Graphic Novels</option><option value='1' >Fantasy Fiction</option><option value='6' >Health and Fitness</option><option value='4' >History</option><option value='2' >Horror</option><option value='3' >Science Fiction</option>                </select>
+                    <option value=""> All Regions </option>
+                    <option value='2' >AFRICA</option><option value='3' >ASIA</option><option value='4' >CANADA</option><option value='5' >CARIBBEAN</option><option value='6' >CENTRAL AMERICA</option><option value='7' >EUROPE</option><option value='8' >SOUTH AMERICA</option><option value='9' >SOUTH PACIFIC</option>                </select>
                 <br /><br />
                 
                 
