@@ -8,14 +8,14 @@
    function getCategory() {
         global $conn;
         
-        $sql = "SELECT categoryName,categoryDescription
-                FROM is_category
-                WHERE categoryId = :categoryId";
-        
+        $sql = "SELECT * FROM is_category
+                WHERE categoryId = " . $_GET['categoryId'];
+                
         $stmt = $conn->prepare($sql);
-        $stmt->execute(array($_GET['categoryId']));
+        $stmt->execute();
         $record = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $record; 
+        
+        return $record;
     } 
 
     if (isset ($_GET['categoryId'])) {
