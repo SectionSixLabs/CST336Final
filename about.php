@@ -6,7 +6,7 @@ include 'inc/header.php';
             <div class='text-center'>
                 <div class="container">
                     <h1 class="display-1 text-dark">SSL Island Mart</h1>
-                    <p class="lead">“If you are a successful man, spend some money, own your island and party as hard as you can!”</p>
+                    <p class="lead">“If you are successful, spend some money, own your island and party as hard as you can!”</p>
                 </div>
             </div>
         </div>
