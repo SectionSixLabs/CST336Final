@@ -1,6 +1,7 @@
 <?php
 
     session_start();
+    include '../functions.php';
 
 ?>
 
@@ -46,7 +47,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href='../cart.php'>
                         <i class="fas fa-shopping-cart"></i>
-                        Cart: 0 </a></li>
+                        Cart: <?php displayCartCount(); ?> </a></li>
                     </a>
                 </li>
             </ul>
