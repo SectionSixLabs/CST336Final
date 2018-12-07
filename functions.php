@@ -1,6 +1,7 @@
 <?php
 
 function displayCart() {
+    // if there are islands in the Session, display them
     if(isset($_SESSION['cart'])) {
         echo "<table class='table'>";
         foreach($_SESSION['cart'] as $item) {
@@ -8,12 +9,13 @@ function displayCart() {
             $productName = $item['productName'];
             $price = $item['price'];
             
-            //display item as table row
+            // display data as table row
             echo "<tr>";
+            echo "<td><img src='" . $item['img'] . "'></td>";
             echo "<td><h4>$productName</h4></td>";
             echo "<td><h4>$price</h4></td>";
             
-            //remove button here
+            // updating form for remove button
             echo "<form method='post'>";
             echo "<input type='hidden' name='removeId' value='$productId'>";
             echo "<td><button class='btn btn-danger'>Remove</button></td>";
