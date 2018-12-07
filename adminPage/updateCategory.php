@@ -62,10 +62,10 @@
             <div class = "row">
                 <div class = "col-md-8 offset-md-2">
         <form>
-            <input  type="hidden" name="categoryId" value="<?=$product['categoryId']?>"/>
-            <strong>Category name</strong> <input type="text" class="form-control" name="categoryName" value="<?=$product['categoryName']?>"> <br />
-            <strong>Category Description</strong> <textarea name="categoryDescription" class="form-control" cols=50 rows = 4> <?=$product['categoryDescription']?></textarea> <br />
-            <input type="submit" name="updateCategory" class='btn btn-primary' value="Category Product"> <br />
+            <input  type="hidden" name="categoryId" value="<?=$category['categoryId']?>"/>
+            <strong>Category name</strong> <input type="text" class="form-control" name="categoryName" value="<?=$category['categoryName']?>"> <br />
+            <strong>Category Description</strong> <textarea name="categoryDescription" class="form-control" cols=50 rows = 4> <?=$category['categoryDescription']?></textarea> <br />
+            <input type="submit" name="updateCategory" class='btn btn-primary' value="Update Category"> <br />
         </form>
 
                     <form action="admin.php">
