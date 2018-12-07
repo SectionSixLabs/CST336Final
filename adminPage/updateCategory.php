@@ -5,21 +5,21 @@
     
     $conn = getDatabaseConnection("islandStore");
     
-   function getCategories() {
+   function getCategory() {
         global $conn;
         
-        $sql = "SELECT categoryId, categoryName,categoryDescription
+        $sql = "SELECT categoryName,categoryDescription
                 FROM is_category
-                ORDER BY categoryName";
+                WHERE categoryId = :categoryId";
         
         $stmt = $conn->prepare($sql);
-        $stmt->execute();
-        $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        return $records; 
+        $stmt->execute(array($_GET['categoryId']));
+        $record = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $record; 
     } 
 
     if (isset ($_GET['categoryId'])) {
-        $category = getCategories();
+        $category = getCategory();
     }
     
     if(isset($_GET['updateCategory'])) {
