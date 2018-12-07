@@ -27,11 +27,10 @@
         $sql = "UPDATE is_category
                 SET categoryName = :categoryName,
                     categoryDescription = :categoryDescription,
-                WHERE categoryId = :categoryId";
+                WHERE categoryId =". $_GET['categoryId'];
         $np = array();
         $np[':categoryName'] = $_GET['categoryName'];
         $np[':categoryDescription'] = $_GET['categoryDescription'];
-        $np[':categoryId'] = $_GET['categoryId'];
 
 
         try {
