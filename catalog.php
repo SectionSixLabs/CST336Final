@@ -6,7 +6,7 @@ $conn = getDatabaseConnection('islandStore');
 
 if(!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = array();
-    }
+}
     
 //check to see if an item has been added to the cart
 if(isset($_POST['productName'])) {
@@ -15,6 +15,8 @@ if(isset($_POST['productName'])) {
     $newItem = array();
     $newItem['productName'] = $_POST['productName'];
     $newItem['price'] = $_POST['price'];
+    $newItem['productId'] = $_POST['productId'];
+    $newItem['productImage'] = $_POST['productImage'];
     
     //can't have multiple of same island
     //is there a need to check cart for multiples of same island?
@@ -62,11 +64,13 @@ function displaySearchResults() {
         
         //echo "<div>$sql</div>";
         
-        echo "<table class='table'>";
+        echo "<hr><table class='table'>";
         
         foreach($records as $record) {
             $productName = $record["productName"];
             $price = $record["price"];
+            $productImage = $record["productImage"];
+            $productId = $record["productId"];
         
             echo "<tr>";
             echo "<td>";
@@ -78,8 +82,16 @@ function displaySearchResults() {
             echo "<form method='post'>";
             echo "<input type='hidden' name='productName' value='$productName'>";
             echo "<input type='hidden' name='price' value='$price'>";
+            echo "<input type='hidden' name='productImage' value='$productImage'>";
+            echo "<input type='hidden' name='productId' value='$productId'>";
             
-            echo '<button class="btn btn-success">Add</button>';
+            if($_POST['itemId'] == $itemId) {
+                echo "<button class='btn btn-success'>Added</button>";
+            } else {
+                echo "<button class='btn btn-warning'>Add</button>";
+            }
+            
+            echo "</form>";
             echo "</td>";
             echo "</tr>";
         }
@@ -89,56 +101,165 @@ function displaySearchResults() {
 
 ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>SSL FINAL</title>
-        
-        <link  href="css/styles.css" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
-    </head>
-    <body>
-        <h1>Section Six Lab Island Mart</h1>
-        <nav>
-            <a href="index.php" id="homepage">Home</a>
-            <a href="catalog.php">Catalog</a>
-            <a href="adminPage/login.php">AdminLogin</a>
-            <a href="about.php">About Us</a> <!-- or maybe contacts? idk-->
-            <a href="cart.php">Cart</a>
-        </nav>
-        
-        <div>
-            <h3>Island Shopper</h3>
+<?php
+include 'inc/header.php';
+?>
+
+    <h1 class="display-3">Island Shopper</h1>
+    
+    <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width:1250px;" role="document" >
+        <div class="modal-content" >
+            <div class="modal-header" >
+            <h5 class="modal-title" id="bookModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <div id="bookInfo"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
         </div>
-        
-        <div>
-            <form>
-                Product: <input type="text" name="product" />
-                <br>
-                Price: From <input type="text" name="priceFrom" size="7"/>
-                        To  <input type="text" name="priceTo" size="7"/>
-                <br>
-                Order result by:
-                <br>
+    </div>
+</div>
+    
+    <div class='container'>
+        <div class='text-center'>
+            
+            </br>
+            <div class = "col-md-6 offset-md-3">
+            <!-- Search Form -->
+            <form enctype="text/plain">
+                <div class="form-group">
+                    <label for="bName"><strong>Product</strong></label>
+                    <input type="text" class="form-control" name="product" id="bName" placeholder="Book Name">
+                </div>
+                <div class="form-group">
+                    <label for="bName"><strong>Developer</strong></label>
+                    <input type="text" class="form-control" name="publisher" id="bName" placeholder="Publisher">
+                </div>
+                <label for="bName"><strong>Region</strong> </label><br />
+                <select class="custom-select" name="genres">
+                    <option value=""> Select One </option>
+                    <option value='7' >Children's Book</option><option value='5' >Comics & Graphic Novels</option><option value='1' >Fantasy Fiction</option><option value='6' >Health and Fitness</option><option value='4' >History</option><option value='2' >Horror</option><option value='3' >Science Fiction</option>                </select>
+                <br /><br />
                 
-                <input type="radio" name="orderBy" value="price"/>Price <br>
-                <input type="radio" name="orderBy" value="name"/>Name
-                <br><br>
                 
-                <input type="submit" value="Search" name="searchForm" />
+                <label for="bName"><strong>Price</strong></label>
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">From:</span>
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="priceFrom" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <div class="input-group mb-3" >
+                    <div class="input-group-prepend" >
+                        <span class="input-group-text">To: </span>
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="priceTo" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <div class="input-group-append">
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <label for="bName"><strong>Order result by: </strong></label><br />
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline1" name="orderBy"  value="priceA" class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline1">Price (ASC)</label>
+                </div>
+                <br />
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline2" name="orderBy" value="priceD"class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline2">Price (DESC)</label>
+                </div>
+                <br />
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="customRadioInline3" name="orderBy" value="name"class="custom-control-input">
+                    <label class="custom-control-label" for="customRadioInline3">Name</label>
+                </div>
+                <br /><br />
+                <input type="submit" name = "searchForm" value="Search" class="btn btn-default">
+                <br /><br />
             </form>
-        </div>
+            </div>
+            
+            <div>
+            <?= displaySearchResults() ?>
+            </div>
         
-        <hr>
-        <div>
-        <?= displaySearchResults() ?>
+            <script>
+    
+            $(document).ready(function(){
+    
+            //$("#adoptionsLink").addClass("active");
+            
+            $(".bookLink").click(function(){
+                
+                //alert(  );
+                
+                $('#bookModal').modal("show");
+                $("#bookInfo").html("<img src='img/loading.gif'>");
+                      
+                
+                $.ajax({
+
+                    type: "GET",
+                    url: "api/getBookInfo.php",
+                    dataType: "json",
+                    data: { "bookId": $(this).attr("id")},
+                    success: function(data,status) {
+                       //alert(data.breed);
+                       //log.console(data.pictureURL);
+                       
+                       $("#bookModalLabel").html("<h2>" + data.bookName +"</h2>");
+                       $("#bookInfo").html("");
+                       $("#bookInfo").append("<img src='" + data.bookImage +"' width='200' >"+ "<br><br>");
+                       $("#bookInfo").append("<strong>Author:</strong> " + data.firstName + " " + data.lastName + "<br><br>");
+                       $("#bookInfo").append("<strong>Description:</strong>  " + data.bookDescription + "<br><br>");
+                       $("#bookInfo").append("<strong>Publisher:</strong>  " + data.bookPublisher + "<br><br>");
+                       $("#bookInfo").append("<strong>Year Published:</strong>  " + data.publishYear + "<br><br>");
+                       $("#bookInfo").append("<strong>Genre:</strong>  " + data.genreName + "<br><br>");
+                       $("#bookInfo").append("<strong>Genre Description:</strong>  " + data.genreDescription + "<br><br>");
+                       $("#bookInfo").append("<strong>Price:</strong>  $" + data.price + "<br><br>");
+                    
+                    },
+                    complete: function(data,status) { //optional, used for debugging purposes
+                    //alert(status);
+                    }
+                });//ajax
+            });
+    }); //document ready
+</script>
+            <!-- Display Search Results -->
+
+                        
+            <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="width:1250px;" role="document" >
+                    <div class="modal-content" >
+                        <div class="modal-header" >
+                        <h5 class="modal-title" id="bookModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                        <div id="bookInfo"></div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <script src="js/js.js"></script>
-    </body>
-</html>
+
+<?php
+include 'inc/footer.php'; ?>

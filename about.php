@@ -1,39 +1,23 @@
 <?php
-
+include 'inc/header.php';
 ?>
 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>SSL FINAL</title>
-        
-        <link  href="css/styles.css" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        
-    </head>
-    <body>
-        <h1>Section Six Lab Island Mart</h1>
-        <nav>
-            <a href="index.php" id="homepage">Home</a>
-            <a href="catalog.php">Catalog</a>
-            <a href="adminPage/login.php">AdminLogin</a>
-            <a href="about.php">About Us</a> <!-- or maybe contacts? idk-->
-            <a href="cart.php">Cart</a>
-        </nav>
-        
-        <div>
-            
-                <h2>Section Six Labs</h2>
-                <h3>Sergiy</h3>
-                <h3>Lacey</h3>
-                <h3>Hisako</h3>
-                <h3>Danny</h3>
+        <div class="jumbotron jumbotron-fluid bg-dark">
+            <div class='text-center'>
+                <div class="container">
+                    <h1 class="display-1 text-dark">SSL Island Mart</h1>
+                    <p class="lead">“If you are a successful man, spend some money, own your island and party as hard as you can!”</p>
+                </div>
+            </div>
         </div>
-        
-        <script src="js/js.js"></script>
-    </body>
-</html>
+    <div class='container'>
+    <div class="display-4">
+        Section Six Labs<br />
+        Sergiy<br />
+        Lacey<br />
+        Hisako<br />
+        Danny<br />
+    </div>
+
+<?php
+include 'inc/footer.php'; ?>

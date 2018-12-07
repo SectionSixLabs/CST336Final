@@ -1,17 +1,5 @@
 <?php
 
-    include 'functions.php';
-    session_start();
-
-    //If 'removeId' has been sent, search the cart for that productName and unset it
-    if(isset($_POST['removeId'])) {
-        foreach($_SESSION['cart'] as $itemKey => $item) {
-            if($item['productId'] == $_POST['removeId']) {
-                unset($_SESSION['cart'][$itemKey]);
-            }
-        }
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -38,13 +26,12 @@
         </nav>
         
         <div>
-            <p>
-                <h2>Shopping Cart</h2>
-                <!-- cart items -->
-                <?php
-                    displayCart();
-                ?>
-            </p>
+            
+                <h2>Section Six Labs</h2>
+                <h3>Sergiy</h3>
+                <h3>Lacey</h3>
+                <h3>Hisako</h3>
+                <h3>Danny</h3>
         </div>
         
         <script src="js/js.js"></script>
