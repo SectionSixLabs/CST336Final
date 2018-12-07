@@ -15,30 +15,44 @@
         $stmt->execute();
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        foreach ($records as $record) {
-            echo "<option value='" . $record['categoryId'] . "'>" . $record['categoryName'] . " </option>";
-        }
+            echo "<table class='table table-hover'>";
+            echo "<thead>
+                    <tr>
+                        <th scope='col'>ID</th>
+                        <th scope='col'>Category Name</th>
+                        <th scope='col'>Category Description</th>
+                    </tr>
+                    </thead>";
+            echo "<tbody>";
+            foreach($records as $record) {
+                
+                echo "<tr>";
+                echo "<td>" . $record['categoryId'] . "</td>";
+                echo "<td>" . $record['categoryName'] . "</td>";
+                echo "<td>" . $record['categoryDescription'] . "</td>";
+                echo "<td><a class='btn btn-primary' href='updateCategory.php?categoryId=" . $record['categoryId'] . "'>Update</a></td>";
+                echo "<form action='deleteCategory.php' onsubmit='return confirmDelete()'>";
+                echo "<input type='hidden' name='categoryId' value= '" . $record['categoryId'] . "'/>";
+                echo "<td><input type='submit' class='btn btn-danger' value='Remove'></td>";
+            }
+            
+            echo "</tbody>";
+            echo "</table>";
     }
     
-    if (isset($_GET['submitProduct'])) {
+    if (isset($_GET['submitCategory'])) {
         
-        $productName = $_GET['productName'];
-        $productDescription = $_GET['description'];
-        $productImage = $_GET['productImage'];
-        $productPrice = $_GET['price'];
-        $categoryId = $_GET['categoryId'];
-        
-        $sql = "INSERT INTO is_product
-                ( productName, productDescription, productImage, price, categoryId)
-                VALUES ( :productName, :productDescription, :productImage, :price, :categoryId)";
+        $categoryName = $_GET['categoryName'];
+        $categoryDescription = $_GET['categoryDescription'];
+
+        $sql = "INSERT INTO is_category
+                ( categoryName, categoryDescription)
+                VALUES ( :categoryName, :categoryDescription)";
                 
         $np = array(); // name parameters array
-        $np[':productName'] =$productName;
-        $np[':productDescription'] =$productDescription;
-        $np[':productImage'] = $productImage;
-        $np[':price'] =$productPrice;
-        $np[':categoryId'] = $categoryId;
-        
+        $np[':categoryName'] =$categoryName;
+        $np[':categoryDescription'] =$productDescription;
+
         $stmt = $conn->prepare($sql);
         $stmt->execute($np);
         
@@ -59,20 +73,15 @@
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
     </head>
     <body class = 'bg-info'>
-        <h1 class = 'display-4'><strong>Add A Product</strong> </h1>
+        <h1 class = 'display-4'><strong>Add A Category</strong> </h1>
         <div class = "container">
             <div class = "row">
                 <div class = "col-md-8 offset-md-2">
         <form>
-            <strong>Product name</strong> <input type="text" class="form-control" name="productName"> <br /><br />
-            <strong>Description</strong> <textarea name="description" class="form-control" cols=50 rows = 4></textarea> <br /><br />
+            <strong>Category name</strong> <input type="text" class="form-control" name="productName"> <br /><br />
+            <strong>Category Description</strong> <textarea name="description" class="form-control" cols=50 rows = 4></textarea> <br /><br />
             <strong>Price</strong> <input type="text" class="form-control" name="price" > <br /><br />
-            <strong>Category</strong> <select name="categoryId" class="form-control">
-                <option value="">Select One</option>
-                <?php getCategories(); ?>
-            </select> <br /><br />
-            <strong>Set Image Url</strong> <input type="text" name="productImage" class="form-control"> <br /><br />
-            <input type="submit" name="submitProduct" class='btn btn-primary' value="Add Product"> <br /><br />
+            <input type="submit" name="submitCategory" class='btn btn-primary' value="Add Category"> <br /><br />
         </form>
                     </br>
                     <form action="admin.php">

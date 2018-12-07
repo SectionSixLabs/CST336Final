@@ -18,20 +18,19 @@
         return $record;
     }
     
-    function getCategories($islandId) {
+    function getCategories() {
         global $conn;
         
-        $sql = "SELECT islandId, islandName
+        $sql = "SELECT categoryId, categoryName,categoryDescription
                 FROM is_category
-                ORDER BY islandName";
-        
+                ORDER BY categoryName";
+                    
         $stmt = $conn->prepare($sql);
         $stmt->execute();
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
         foreach ($records as $record) {
-            echo "<option ";
-            echo ($record['islandId'] == $islandId)?"selected": "";
-            echo " value='". $record['islandId'] . "'>" . $record['islandName'] . " </option>";
+            echo "<option value='" . $record['categoryId'] . "'>" . $record['categoryName'] . " </option>";
         }
     }
 
@@ -46,14 +45,14 @@
                     productDescription = :productDescription,
                     productImage = :productImage,
                     price = :price,
-                    islandId = :islandId
+                    categoryId = :categoryId
                 WHERE productId = :productId";
         $np = array();
         $np[':productName'] = $_GET['productName'];
         $np[':productDescription'] = $_GET['productDescription'];
         $np[':productImage'] = $_GET['productImage'];
         $np[':price'] = $_GET['price'];
-        $np[':islandId'] = $_GET['islandId'];
+        $np[':categoryId'] = $_GET['categoryId'];
         $np[':productId'] = $_GET['productId'];
 
         try {
@@ -89,9 +88,9 @@
             <strong>Product name</strong> <input type="text" class="form-control" name="productName" value="<?=$product['productName']?>"> <br />
             <strong>Description</strong> <textarea name="description" class="form-control" cols=50 rows = 4> <?=$product['productDescription']?></textarea> <br />
             <strong>Price</strong> <input type="text" class="form-control" name="price" value="<?=$product['price']?>"> <br />
-            <strong>Category</strong> <select name="islandId" class="form-control">
+            <strong>Category</strong> <select name="categoryId" class="form-control">
                 <option value="">Select One</option>
-                <?php getCategories( $product['islandId']); ?>
+                <?php getCategories( $product['categoryId']); ?>
             </select> <br />
             <strong>Set Image Url</strong> <input type="text" name="productImage" value="<?=$product['productImage']?>" class="form-control"> <br />
             <input type="submit" name="updateProduct" class='btn btn-primary' value="Update Product"> <br />
