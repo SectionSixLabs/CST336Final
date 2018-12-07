@@ -5,7 +5,7 @@
     $conn = getDatabaseConnection("islandStore");
     
     $sql = "DELETE
-            FROM categoryId
+            FROM is_category
             WHERE categoryId = " . $_GET['categoryId'];
             
     $stmt = $conn->prepare($sql);
