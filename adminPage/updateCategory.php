@@ -31,6 +31,7 @@
         $np = array();
         $np[':categoryName'] = $_GET['categoryName'];
         $np[':categoryDescription'] = $_GET['categoryDescription'];
+        $np[':categoryId'] = $_GET['categoryId'];
 
 
         try {
