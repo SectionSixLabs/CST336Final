@@ -1,5 +1,5 @@
 <?php
-
+    include 'inc/header.php';
     include 'functions.php';
     session_start();
 
@@ -50,3 +50,5 @@
         <script src="js/js.js"></script>
     </body>
 </html>
+<?php
+include 'inc/footer.php'; ?>
