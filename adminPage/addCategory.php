@@ -80,7 +80,6 @@
         <form>
             <strong>Category name</strong> <input type="text" class="form-control" name="productName"> <br /><br />
             <strong>Category Description</strong> <textarea name="description" class="form-control" cols=50 rows = 4></textarea> <br /><br />
-            <strong>Price</strong> <input type="text" class="form-control" name="price" > <br /><br />
             <input type="submit" name="submitCategory" class='btn btn-primary' value="Add Category"> <br /><br />
         </form>
                     </br>
