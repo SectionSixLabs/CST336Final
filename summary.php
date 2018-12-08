@@ -74,56 +74,48 @@
                 
                 <!-- Bootstrap Navagation Bar -->
                 <br /> <br /> <br />
-                <h2>Shopping Cart</h2>
+                <h2>Summary</h2>
                 <?php
                     displayCart();
                 ?>
-                <!-- Cart Items -->
-                <hr><form method='post'><input type='hidden' name='clearCart' value='true'><button class='btn btn-outline-danger'>Clear Cart</button></form><br />
-                <form method='post' action="summary.php"><input type='hidden' name='summary' value='true'><button class='btn btn-outline-warning'>Summary</button></form>
-                <script>
-    
-            $(document).ready(function(){
-    
-            //$("#adoptionsLink").addClass("active");
-            
-            $(".productLink").click(function(){
+                <hr>
+                <h3> Tax: 8.75%</h3>
+                <h3>Total: $<?php totalCart(); ?></h3>
+                <!-- Checkout Items AJAX -->
+                <hr>
                 
-                //alert(  );
+                <h2>Customer Check Out</h2>
                 
-                $('#productModal').modal("show");
-                $("#productInfo").html("<img src='img/loading.gif'>");
-                      
+                <form enctype="text/plain">
+                <div class="form-group">
+                    <label for="firstName"><strong>First Name</strong></label>
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name">
+                </div>
                 
-                $.ajax({
+                <div class="form-group">
+                    <label for="lastName"><strong>Last Name</strong></label>
+                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
+                </div>
+                
+                <label for="bName"><strong>Gender</strong> </label><br />
+                <select class="custom-select" name="gender">
+                    <option value="F">Female</option>
+                    <option value='M' >Male</option>
+                </select>
+                <br /><br />
+                
+                <div class="form-group">
+                    <label for="email"><strong>Email</strong></label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                </div>
+                
+                <button class='btn btn-outline-danger'>Check Out</button>
+                </form><br />
 
-                    type: "GET",
-                    url: "api/getProductInfo.php",
-                    dataType: "json",
-                    data: { "productId": $(this).attr("productId")},
-                    success: function(data,status) {
-                       //alert(data.breed);
-                       //log.console(data.pictureURL);
-                       
-                       $("#productModalLabel").html("<h2>" + data.productName +"</h2>");
-                       $("#productInfo").html("");
-                       $("#productInfo").append("<img src='" + data.productImage +"' width='200' >"+ "<br><br>");
-                       $("#productInfo").append("<strong>Author:</strong> " + data.firstName + " " + data.lastName + "<br><br>");
-                       $("#productInfo").append("<strong>Description:</strong>  " + data.productDescription + "<br><br>");
-                       $("#productInfo").append("<strong>Publisher:</strong>  " + data.productPublisher + "<br><br>");
-                       $("#productInfo").append("<strong>Year Published:</strong>  " + data.publishYear + "<br><br>");
-                       $("#productInfo").append("<strong>Genre:</strong>  " + data.genreName + "<br><br>");
-                       $("#productInfo").append("<strong>Genre Description:</strong>  " + data.genreDescription + "<br><br>");
-                       $("#productInfo").append("<strong>Price:</strong>  $" + data.price + "<br><br>");
-                    
-                    },
-                    complete: function(data,status) { //optional, used for debugging purposes
-                    //alert(status);
-                    }
-                });//ajax
-            });
-    }); //document ready
-</script>
+                
+                <script>
+                    //
+                </script>
                 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="width:1250px;" role="document" >
                     <div class="modal-content" >
