@@ -80,7 +80,7 @@
                 ?>
                 <!-- Cart Items -->
                 <hr><form method='post'><input type='hidden' name='clearCart' value='true'><button class='btn btn-outline-danger'>Clear Cart</button></form><br />
-                <form method='post'><input type='hidden' name='summery' value='true'><button class='btn btn-outline-warning'>Summery</button></form>
+                <form method='post'><input type='hidden' name='summary' value='true'><button class='btn btn-outline-warning'>Summary</button></form>
                 <script>
     
             $(document).ready(function(){
