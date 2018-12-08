@@ -87,7 +87,7 @@ function displaySearchResults() {
             echo "<input type='hidden' name='productImage' value='$productImage'>";
             echo "<input type='hidden' name='productId' value='$productId'>";
             
-            if($_POST['itemId'] == $itemId) {
+            if($_POST['productId'] == $productId) {
                 echo "<button class='btn btn-success'>Added</button>";
             } else {
                 echo "<button class='btn btn-warning'>Add</button>";
