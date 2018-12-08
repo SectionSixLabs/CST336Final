@@ -170,17 +170,17 @@ function displaySearchResults() {
 
     <h1 class="display-3">Island Shopper</h1>
     
-    <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="islandModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width:1250px;" role="document" >
         <div class="modal-content" >
             <div class="modal-header" >
-            <h5 class="modal-title" id="bookModalLabel"></h5>
+            <h5 class="modal-title" id="islandModalLabel"></h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
             </div>
             <div class="modal-body">
-            <div id="bookInfo"></div>
+            <div id="islandInfo"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -264,34 +264,33 @@ function displaySearchResults() {
     
             //$("#adoptionsLink").addClass("active");
             
-            $(".bookLink").click(function(){
+            $(".islandLink").click(function(){
                 
                 //alert(  );
                 
-                $('#bookModal').modal("show");
-                $("#bookInfo").html("<img src='img/loading.gif'>");
+                $('#islandModal').modal("show");
+                $("#islandInfo").html("<img src='img/loading.gif'>");
                       
                 
                 $.ajax({
 
                     type: "GET",
-                    url: "api/getBookInfo.php",
+                    url: "api/getIslandInfo.php",
                     dataType: "json",
-                    data: { "bookId": $(this).attr("id")},
+                    data: { "islandId": $(this).attr("id")},
                     success: function(data,status) {
                        //alert(data.breed);
                        //log.console(data.pictureURL);
                        
-                       $("#bookModalLabel").html("<h2>" + data.bookName +"</h2>");
-                       $("#bookInfo").html("");
-                       $("#bookInfo").append("<img src='" + data.bookImage +"' width='200' >"+ "<br><br>");
-                       $("#bookInfo").append("<strong>Author:</strong> " + data.firstName + " " + data.lastName + "<br><br>");
-                       $("#bookInfo").append("<strong>Description:</strong>  " + data.bookDescription + "<br><br>");
-                       $("#bookInfo").append("<strong>Publisher:</strong>  " + data.bookPublisher + "<br><br>");
-                       $("#bookInfo").append("<strong>Year Published:</strong>  " + data.publishYear + "<br><br>");
-                       $("#bookInfo").append("<strong>Genre:</strong>  " + data.genreName + "<br><br>");
-                       $("#bookInfo").append("<strong>Genre Description:</strong>  " + data.genreDescription + "<br><br>");
-                       $("#bookInfo").append("<strong>Price:</strong>  $" + data.price + "<br><br>");
+                       $("#islandModalLabel").html("<h2>" + data.productName +"</h2>");
+                       $("#islandInfo").html("");
+                       $("#islandInfo").append("<img src='" + data.islandImage +"' width='200' >"+ "<br><br>");
+                       $("#islandInfo").append("<strong>Region:</strong> " + data.categoryName + "<br><br>");
+                       $("#islandInfo").append("<strong>Region Description:</strong>  " + data.categoryDescription + "<br><br>");
+                       $("#islandInfo").append("<strong>Island Size:</strong>  " + data.islandSize + "<br><br>");
+                       $("#islandInfo").append("<strong>Development:</strong>  $" + data.islandDevelopment + "<br><br>");
+                       $("#islandInfo").append("<strong>Price:</strong>  $" + data.price + "<br><br>");
+                       
                     
                     },
                     complete: function(data,status) { //optional, used for debugging purposes
@@ -304,17 +303,17 @@ function displaySearchResults() {
             <!-- Display Search Results -->
 
                         
-            <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="islandModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="width:1250px;" role="document" >
                     <div class="modal-content" >
                         <div class="modal-header" >
-                        <h5 class="modal-title" id="bookModalLabel"></h5>
+                        <h5 class="modal-title" id="islandModalLabel"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
-                        <div id="bookInfo"></div>
+                        <div id="islandInfo"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
