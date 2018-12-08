@@ -78,6 +78,9 @@
                 <?php
                     displayCart();
                 ?>
+                <hr>
+                <h3> Tax: 8.75%</h3>
+                <h3>Total: $<?php totalCart(); ?></h3>
                 <!-- Cart Items 
                 <hr><form method='post'><input type='hidden' name='clearCart' value='true'><button class='btn btn-outline-danger'>Clear Cart</button></form><br />
                 <form method='post'><input type='hidden' name='summary' value='true'><button class='btn btn-outline-warning'>Summary</button></form>

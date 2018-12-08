@@ -28,6 +28,22 @@ function displayCart() {
     }
 }
 
+function totalCart() {
+    //if there are island in session add total
+    $price=0;
+    
+    $taxrate = .875; //If Change tax here but also <h3> tag in summary page 
+    
+    if(isset($_SESSION['cart'])) {
+        foreach($_SESSION['cart'] as $item) {
+            $price += $item['price'];
+        }
+    }
+    $tax = $price * $taxrate;
+    $total = $tax+ $price;
+    echo $total;
+}
+
 function displayCartCount() {
     echo count($_SESSION['cart']);
 }
