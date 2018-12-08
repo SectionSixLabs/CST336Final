@@ -32,7 +32,7 @@ function totalCart() {
     //if there are island in session add total
     $price=0;
     
-    $taxrate = .875; //If Change tax here but also <h3> tag in summary page 
+    $taxrate = .0875; //If Change tax here but also <h3> tag in summary page 
     
     if(isset($_SESSION['cart'])) {
         foreach($_SESSION['cart'] as $item) {
