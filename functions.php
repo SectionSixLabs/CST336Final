@@ -8,11 +8,12 @@ function displayCart() {
             $productId = $item['productId'];
             $productName = $item['productName'];
             $price = $item['price'];
+            $productImage = $item['productImage'];
             
             // display data as table row
             echo "<tr>";
-            echo "<td><img src='" . $item['img'] . "'></td>";
-            echo "<td><h4>$productName</h4></td>";
+            echo "<td><img src='img/$productImage' width='200'></td>";
+            echo "<td><h4><a href='#' class='productLink' productId=$productId>$productName</a></h4></td>";
             echo "<td><h4>$price</h4></td>";
             
             // updating form for remove button

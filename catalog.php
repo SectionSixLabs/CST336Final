@@ -33,11 +33,16 @@ function displaySearchResults() {
         
         $namedParameters = array();
         
-        $sql = "SELECT * FROM is_product where 1";
+        $sql = "SELECT * FROM is_product inner join is_category on is_product.categoryId = is_category.categoryId where 1";
 
         if(!empty($_GET['product'])) {
             $sql .=" AND productName LIKE :productName";
             $namedParameters[":productName"] = "%" . $_GET['product'] . "%";
+        }
+        
+        if(!empty($_GET['categoryId'])) { //check "Price to" text box
+            $sql .= " AND is_product.categoryId = :categoryId";
+            $namedParameters[":categoryId"] = $_GET['categoryId'];
         }
         
         if(!empty($_GET['priceFrom'])) { //check "Price from" text box
@@ -60,6 +65,7 @@ function displaySearchResults() {
             }
         }
         
+        //echo $sql;
         $stmt = $conn->prepare($sql);
         $stmt->execute($namedParameters);
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -199,7 +205,7 @@ function displaySearchResults() {
                 <!--    <input type="text" class="form-control" name="publisher" id="bName" placeholder="Publisher">-->
                 <!--</div>-->
                 <label for="bName"><strong>Region</strong> </label><br />
-                <select class="custom-select" name="genres">
+                <select class="custom-select" name="categoryId">
                     <option value=""> All Regions </option>
                     <option value='2' >AFRICA</option><option value='3' >ASIA</option><option value='4' >CANADA</option><option value='5' >CARIBBEAN</option><option value='6' >CENTRAL AMERICA</option><option value='7' >EUROPE</option><option value='8' >SOUTH AMERICA</option><option value='9' >SOUTH PACIFIC</option>                </select>
                 <br /><br />
