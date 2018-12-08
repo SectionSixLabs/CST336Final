@@ -51,8 +51,10 @@ function displaySearchResults() {
         }
         
         if(isset($_GET['orderBy'])) {
-            if($_GET['orderBy'] == "price") {
+            if($_GET['orderBy'] == "priceA") {
                 $sql .= " ORDER BY price";
+            } else if ($_GET['orderBy'] == "priceD"){
+                $sql .= " ORDER BY price DESC";
             } else {
                 $sql .= " ORDER BY productName";
             }
@@ -190,12 +192,12 @@ function displaySearchResults() {
             <form enctype="text/plain">
                 <div class="form-group">
                     <label for="bName"><strong>Product</strong></label>
-                    <input type="text" class="form-control" name="product" id="bName" placeholder="Book Name">
+                    <input type="text" class="form-control" name="product" id="bName" placeholder="Name">
                 </div>
-                <div class="form-group">
-                    <label for="bName"><strong>Developer</strong></label>
-                    <input type="text" class="form-control" name="publisher" id="bName" placeholder="Publisher">
-                </div>
+                <!--<div class="form-group">-->
+                <!--    <label for="bName"><strong>Developer</strong></label>-->
+                <!--    <input type="text" class="form-control" name="publisher" id="bName" placeholder="Publisher">-->
+                <!--</div>-->
                 <label for="bName"><strong>Region</strong> </label><br />
                 <select class="custom-select" name="genres">
                     <option value=""> All Regions </option>
