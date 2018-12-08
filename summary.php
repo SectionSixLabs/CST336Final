@@ -81,10 +81,37 @@
                 <hr>
                 <h3> Tax: 8.75%</h3>
                 <h3>Total: $<?php totalCart(); ?></h3>
-                <!-- Cart Items 
-                <hr><form method='post'><input type='hidden' name='clearCart' value='true'><button class='btn btn-outline-danger'>Clear Cart</button></form><br />
-                <form method='post'><input type='hidden' name='summary' value='true'><button class='btn btn-outline-warning'>Summary</button></form>
-                -->
+                <!-- Checkout Items AJAX -->
+                <hr>
+                
+                <h2>Customer Check Out</h2>
+                
+                <form enctype="text/plain">
+                <div class="form-group">
+                    <label for="firstName"><strong>First Name</strong></label>
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName"><strong>Last Name</strong></label>
+                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
+                </div>
+                
+                <label for="bName"><strong>Gender</strong> </label><br />
+                <select class="custom-select" name="gender">
+                    <option value="F">Female</option>
+                    <option value='M' >Male</option>
+                </select>
+                <br /><br />
+                
+                <div class="form-group">
+                    <label for="email"><strong>Email</strong></label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="Email">
+                </div>
+                
+                <button class='btn btn-outline-danger'>Check Out</button>
+                </form><br />
+
                 
                 <script>
                     //
