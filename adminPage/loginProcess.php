@@ -31,6 +31,7 @@
         header("Location:login.php");
     } else {
         $_SESSION['incorrect'] = false;
+        $_SESSION['username'] = $record['username'];
         $_SESSION['adminName'] = $record['firstName'] . " " . $record['lastName'];
         header("Location:admin.php");
     }
