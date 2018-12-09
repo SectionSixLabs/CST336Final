@@ -284,7 +284,7 @@ function displaySearchResults() {
                        $("#productInfo").html("");
                        $("#productInfo").append("<img src='img/" + data.productImage +"' width='200' >"+ "<br><br>");
                        $("#productInfo").append("<strong>Description:</strong>  " + data.productDescription + "<br><br>");
-                       $("#productInfo").append("<strong>price:</strong>  " + data.price + "<br><br>");
+                       $("#productInfo").append("<strong>Price:</strong>  $" + data.price + "<br><br>");
                        $("#productInfo").append("<strong>Region:</strong>  " + data.categoryName + "<br><br>");
                        $("#productInfo").append("<strong>Type:</strong>  " + data.typeName + "<br><br>");
                        $("#productInfo").append("<strong>Size:</strong>  " + data.size + "<br><br>");
