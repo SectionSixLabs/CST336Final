@@ -116,7 +116,6 @@
             <script>
     
             $(document).ready(function(){
-
             $("#checkout").click(function(){
             
                 $.ajax({
@@ -135,7 +134,7 @@
                         alert(data.firstName);
                     },
                     complete: function(data) { //optional, used for debugging purposes
-                    //alert(status);
+                    alert(status);
                     }
                 });//ajax
             });
