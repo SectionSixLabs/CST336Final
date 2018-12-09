@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'connect.php';
+include 'dbConnection.php';
 $connect = getDatabaseConnection();
 
 //Data for is_user
@@ -20,8 +20,10 @@ $dataUser = array(
     ":email" => $email
 );
 try {
-$stmt = $connect->prepare($sqlUser);
-$stmt->execute($dataUser);
+    $stmt = $connect->prepare($sqlUser);
+    $stmt->execute($dataUser);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    echo json_encode($result); 
 } catch (PDOException $e) {
    echo json_encode($e); 
 }
