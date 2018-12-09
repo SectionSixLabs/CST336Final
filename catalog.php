@@ -82,7 +82,7 @@ function displaySearchResults() {
         
             echo "<tr>";
             echo "<td>";
-            echo "<img src='img/$productImage' height='150' width='150'>" ." ". $productName . " " . $record["productDescription"] . " $" . $price . "<br /><br />";
+            echo "<img src='img/$productImage' height='200' width='300'>" ." ". $productName . " " . $record["productDescription"] . " $" . $price . "<br /><br />";
             echo "</td>";
         
             echo "<td>";
