@@ -24,7 +24,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -97,8 +97,8 @@
                     <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
                 </div>
                 
-                <label for="bName"><strong>Gender</strong> </label><br />
-                <select class="custom-select" name="gender">
+                <label for="form-group"><strong>Gender</strong> </label><br />
+                <select class="custom-select" id="gender" name="gender">
                     <option value="F">Female</option>
                     <option value='M' >Male</option>
                 </select>
@@ -109,12 +109,36 @@
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email">
                 </div>
                 
-                <button class='btn btn-outline-danger'>Check Out</button>
+                <input type="button" name ="checkout" value="checkout" id="checkout" class="btn btn-outline-danger">
                 </form><br />
-
                 
-                <script>
-                    //
+                
+            <script>
+    
+            $(document).ready(function(){
+            $("#checkout").click(function(){
+            
+                $.ajax({
+
+                    type: "POST",
+                    url: "submitCheckout.php",
+                    dataType: "json",
+                    data: {"firstName" : $("#firstName").val(),
+                            "lastName" : $("#lastName").val(),
+                            "gender" : $("#gender").val(),
+                            "email" : $("#email").val()
+                    },
+                    success: function(data) {
+
+                        alert("Submitted");
+                        alert(data.firstName);
+                    },
+                    complete: function(data) { //optional, used for debugging purposes
+                    alert(status);
+                    }
+                });//ajax
+            });
+    }); //document ready
                 </script>
                 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="width:1250px;" role="document" >

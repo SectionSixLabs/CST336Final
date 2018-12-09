@@ -77,12 +77,12 @@ function displaySearchResults() {
         foreach($records as $record) {
             $productName = $record["productName"];
             $price = $record["price"];
-            $productImage = $record["img/productImage"];
+            $productImage = $record["productImage"];
             $productId = $record["productId"];
         
             echo "<tr>";
             echo "<td>";
-            echo $productImage + $productName . " " . $record["productDescription"] . " $" . $price . "<br /><br />";
+            echo "<img src='img/$productImage' height='200' width='300'>" ." ". $productName . " " . $record["productDescription"] . " $" . $price . "<br /><br />";
             echo "</td>";
         
             echo "<td>";
@@ -90,7 +90,7 @@ function displaySearchResults() {
             echo "<form method='post'>";
             echo "<input type='hidden' name='productName' value='$productName'>";
             echo "<input type='hidden' name='price' value='$price'>";
-            echo "<input type='hidden' name='img/$productImage' value='img/$productImage'>";
+            echo "<input type='hidden' name='productImage' value='$productImage'>";
             echo "<input type='hidden' name='productId' value='$productId'>";
             
             if($_POST['productId'] == $productId) {
