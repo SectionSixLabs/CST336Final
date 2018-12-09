@@ -19,9 +19,12 @@ $dataUser = array(
     ":gender" => $gender,
     ":email" => $email
 );
+try {
 $stmt = $connect->prepare($sqlUser);
 $stmt->execute($dataUser);
-
+} catch (PDOException $e) {
+   echo json_encode($e); 
+}
 
 
 ?>
