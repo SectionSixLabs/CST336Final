@@ -97,8 +97,8 @@
                     <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Last Name">
                 </div>
                 
-                <label for="bName"><strong>Gender</strong> </label><br />
-                <select class="custom-select" name="gender">
+                <label for="form-group"><strong>Gender</strong> </label><br />
+                <select class="custom-select" id="gender" name="gender">
                     <option value="F">Female</option>
                     <option value='M' >Male</option>
                 </select>
@@ -109,12 +109,37 @@
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email">
                 </div>
                 
-                <button class='btn btn-outline-danger'>Check Out</button>
+                <input type="submit" name ="checkout" value="checkout" id="checkout" class="btn btn-outline-danger">
                 </form><br />
-
                 
-                <script>
-                    //
+                
+            <script>
+    
+            $(document).ready(function(){
+            alert(hi);
+            $("#checkout").click(function(){
+            
+                $.ajax({
+
+                    type: "POST",
+                    url: "submitCheckout.php",
+                    dataType: "json",
+                    data: {"firstName" : $("#firstName").val(),
+                            "lastName" : $("#lastName").val(),
+                            "gender" : $("#gender").val(),
+                            "email" : $("#email").val()
+                    },
+                    success: function(data) {
+
+                        alert("Submitted");
+                        alert(data.firstName);
+                    },
+                    complete: function(data) { //optional, used for debugging purposes
+                    //alert(status);
+                    }
+                });//ajax
+            });
+    }); //document ready
                 </script>
                 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="width:1250px;" role="document" >
