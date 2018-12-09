@@ -287,7 +287,7 @@ function displaySearchResults() {
                        $("#productInfo").append("<strong>Price:</strong>  $" + data.price + "<br><br>");
                        $("#productInfo").append("<strong>Region:</strong>  " + data.categoryName + "<br><br>");
                        $("#productInfo").append("<strong>Type:</strong>  " + data.typeName + "<br><br>");
-                       $("#productInfo").append("<strong>Size:</strong>  " + data.size + "<br><br>");
+                       $("#productInfo").append("<strong>Size:</strong>  " + data.size + " acres" + "<br><br>");
                        $("#productInfo").append("<strong>Location:</strong>  " + data.location + "<br><br>");
                        
                     },
