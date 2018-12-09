@@ -86,7 +86,7 @@
                 
                 <h2>Customer Check Out</h2>
                 
-                <form enctype="text/plain">
+                <form id="register_form" enctype="text/plain">
                 <div class="form-group">
                     <label for="firstName"><strong>First Name</strong></label>
                     <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name">
@@ -118,6 +118,25 @@
             $(document).ready(function(){
             $("#checkout").click(function(){
             
+      
+            var formInvalid = false;
+            if($("#firstName").val().length == 0)
+                    formInvalid = true;
+            if($("#lastName").val().length == 0)
+                    formInvalid = true;
+            if($("#gender").val().length == 0)
+                    formInvalid = true;
+            if($("#email").val().length == 0)
+                    formInvalid = true;
+
+    
+            
+            if(formInvalid) {
+                alert("Missing Field! Please Enter All Data Fields.");   
+            } 
+            else {
+                
+            
                 $.ajax({
 
                     type: "POST",
@@ -136,7 +155,11 @@
                     //alert(status);
                     }
                 });//ajax
+                
+            }
             });
+            
+            
     }); //document ready
                 </script>
                 <script>
