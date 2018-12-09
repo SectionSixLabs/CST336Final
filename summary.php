@@ -109,7 +109,7 @@
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email">
                 </div>
                 
-                <input type="submit" name ="checkout" value="checkout" id="checkout" class="btn btn-outline-danger">
+                <input type="button" name ="checkout" value="checkout" id="checkout" class="btn btn-outline-danger">
                 </form><br />
                 
                 
