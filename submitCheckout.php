@@ -22,7 +22,8 @@ $dataUser = array(
 try {
     $stmt = $connect->prepare($sqlUser);
     $stmt->execute($dataUser);
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+   // $result = $stmt->fetch(PDO::FETCH_ASSOC);
+   $result = "OK";
     echo json_encode($result); 
 } catch (PDOException $e) {
    echo json_encode($e); 
