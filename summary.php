@@ -130,11 +130,10 @@
                     },
                     success: function(data) {
 
-                        alert("Submitted");
-                        alert(data.firstName);
+                        alert(data);
                     },
                     complete: function(data) { //optional, used for debugging purposes
-                    alert(status);
+                    //alert(status);
                     }
                 });//ajax
             });
@@ -147,8 +146,6 @@
             //$("#adoptionsLink").addClass("active");
             
             $(".productLink").click(function(){
-                
-                //alert(  );
                 
                 $('#productModal').modal("show");
                 $("#productInfo").html("<img src='img/loading.gif'>");
