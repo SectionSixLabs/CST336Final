@@ -102,9 +102,7 @@
                     dataType: "json",
                     data: { "productId": $(this).attr("productId")},
                     success: function(data,status) {
-                       alert(data.breed);
-                       //log.console(data.productImage);
-                       
+
                        $("#productModalLabel").html("<h2>" + data.productId + ":" + data.productName + "</h2>");
                        $("#productInfo").html("");
                        $("#productInfo").append("<img src='img/" + data.productImage +"' width='200' >"+ "<br><br>");
