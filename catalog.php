@@ -82,7 +82,7 @@ function displaySearchResults() {
         
             echo "<tr>";
             echo "<td>";
-            echo "<img src='img/$productImage' height='200' width='300'>" ." ". $productName . " " . $record["productDescription"] . " $" . $price . "<br /><br />";
+            echo "<img src='img/$productImage' height='200' width='300'>" ." <a href='#' class='productLink' productId=$productId>". $productName . "</a> " . $record["productDescription"] . " $" . $price . "<br /><br />";
             echo "</td>";
         
             echo "<td>";
@@ -122,7 +122,7 @@ function displaySearchResults() {
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -258,40 +258,38 @@ function displaySearchResults() {
             <?= displaySearchResults() ?>
             </div>
         
-            <script>
+                <script>
     
             $(document).ready(function(){
     
             //$("#adoptionsLink").addClass("active");
             
-            $(".islandLink").click(function(){
+            $(".productLink").click(function(){
                 
                 //alert(  );
                 
-                $('#islandModal').modal("show");
-                $("#islandInfo").html("<img src='img/loading.gif'>");
+                $('#productModal').modal("show");
+                $("#productInfo").html("<img src='img/loading.gif'>");
                       
                 
                 $.ajax({
 
                     type: "GET",
-                    url: "api/getIslandInfo.php",
+                    url: "api/getProductInfo.php",
                     dataType: "json",
-                    data: { "islandId": $(this).attr("id")},
+                    data: { "productId": $(this).attr("productId")},
                     success: function(data,status) {
-                       //alert(data.breed);
-                       //log.console(data.pictureURL);
+
+                       $("#productModalLabel").html("<h2>" + data.productId + ":" + data.productName + "</h2>");
+                       $("#productInfo").html("");
+                       $("#productInfo").append("<img src='img/" + data.productImage +"' width='200' >"+ "<br><br>");
+                       $("#productInfo").append("<strong>Description:</strong>  " + data.productDescription + "<br><br>");
+                       $("#productInfo").append("<strong>price:</strong>  " + data.price + "<br><br>");
+                       $("#productInfo").append("<strong>Region:</strong>  " + data.categoryName + "<br><br>");
+                       $("#productInfo").append("<strong>Type:</strong>  " + data.typeName + "<br><br>");
+                       $("#productInfo").append("<strong>Size:</strong>  " + data.size + "<br><br>");
+                       $("#productInfo").append("<strong>Location:</strong>  " + data.location + "<br><br>");
                        
-                       $("#islandModalLabel").html("<h2>" + data.productName +"</h2>");
-                       $("#islandInfo").html("");
-                       $("#islandInfo").append("<img src='" + data.islandImage +"' width='200' >"+ "<br><br>");
-                       $("#islandInfo").append("<strong>Region:</strong> " + data.categoryName + "<br><br>");
-                       $("#islandInfo").append("<strong>Region Description:</strong>  " + data.categoryDescription + "<br><br>");
-                       $("#islandInfo").append("<strong>Island Size:</strong>  " + data.islandSize + "<br><br>");
-                       $("#islandInfo").append("<strong>Development:</strong>  $" + data.islandDevelopment + "<br><br>");
-                       $("#islandInfo").append("<strong>Price:</strong>  $" + data.price + "<br><br>");
-                       
-                    
                     },
                     complete: function(data,status) { //optional, used for debugging purposes
                     //alert(status);
@@ -300,20 +298,17 @@ function displaySearchResults() {
             });
     }); //document ready
 </script>
-            <!-- Display Search Results -->
-
-                        
-            <div class="modal fade" id="islandModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="width:1250px;" role="document" >
                     <div class="modal-content" >
                         <div class="modal-header" >
-                        <h5 class="modal-title" id="islandModalLabel"></h5>
+                        <h5 class="modal-title" id="productModalLabel"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
-                        <div id="islandInfo"></div>
+                        <div id="productInfo"></div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -322,8 +317,7 @@ function displaySearchResults() {
                 </div>
             </div>
         </div>
+
+        <script src="js/js.js"></script>
     </body>
 </html>
-
-<?php
-include 'inc/footer.php'; ?>

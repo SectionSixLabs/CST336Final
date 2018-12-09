@@ -24,7 +24,7 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <link href="css/styles.css" rel="stylesheet" type="text/css" />
@@ -130,16 +130,53 @@
                     },
                     success: function(data) {
 
-                        alert("Submitted");
-                        alert(data.firstName);
+                        alert(JSON.stringify(data));
                     },
                     complete: function(data) { //optional, used for debugging purposes
-                    alert(status);
+                    //alert(status);
                     }
                 });//ajax
             });
     }); //document ready
                 </script>
+                <script>
+    
+            $(document).ready(function(){
+    
+            //$("#adoptionsLink").addClass("active");
+            
+            $(".productLink").click(function(){
+                
+                $('#productModal').modal("show");
+                $("#productInfo").html("<img src='img/loading.gif'>");
+                      
+                
+                $.ajax({
+
+                    type: "GET",
+                    url: "api/getProductInfo.php",
+                    dataType: "json",
+                    data: { "productId": $(this).attr("productId")},
+                    success: function(data,status) {
+
+                       $("#productModalLabel").html("<h2>" + data.productId + ":" + data.productName + "</h2>");
+                       $("#productInfo").html("");
+                       $("#productInfo").append("<img src='img/" + data.productImage +"' width='200' >"+ "<br><br>");
+                       $("#productInfo").append("<strong>Description:</strong>  " + data.productDescription + "<br><br>");
+                       $("#productInfo").append("<strong>price:</strong>  " + data.price + "<br><br>");
+                       $("#productInfo").append("<strong>Region:</strong>  " + data.categoryName + "<br><br>");
+                       $("#productInfo").append("<strong>Type:</strong>  " + data.typeName + "<br><br>");
+                       $("#productInfo").append("<strong>Size:</strong>  " + data.size + "<br><br>");
+                       $("#productInfo").append("<strong>Location:</strong>  " + data.location + "<br><br>");
+                       
+                    },
+                    complete: function(data,status) { //optional, used for debugging purposes
+                    //alert(status);
+                    }
+                });//ajax
+            });
+    }); //document ready
+</script>
                 <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="width:1250px;" role="document" >
                     <div class="modal-content" >

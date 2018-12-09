@@ -49,32 +49,32 @@
                 $("#getData").click(function(){
                     $.ajax({
                         type: "GET",
-                        url: "api/getAggInfo.php",
+                        url: "../api/getAnalysisInfo.php",
                         dataType: "json",
                         data: { "id" : "" },
                         success: function(data,status) {
                                 $("#Agg").html("");
-                                $("#Agg").append("<strong>Total Books:</strong> " + data[0].totalBooks + "<br><br>");
-                                $("#Agg").append("<strong>Average Book Price:</strong>  $" + data[0].average + "<br><br>");
-                                $("#Agg").append("<strong>Max Book Price:</strong>  $" + data[0].max + "<br><br>");
-                                $("#Agg").append("<strong>Min Book Price:</strong>  $" + data[0].min + "<br><br>");
+                                $("#Agg").append("<strong>Total Islands:</strong> " + data[0].totalIslands + "<br><br>");
+                                $("#Agg").append("<strong>Average Island Price:</strong>  $" + data[0].average + "<br><br>");
+                                $("#Agg").append("<strong>Max Island Price:</strong>  $" + data[0].max + "<br><br>");
+                                $("#Agg").append("<strong>Min Island Price:</strong>  $" + data[0].min + "<br><br>");
                         }
                     });
                 });
             });
             function confirmDelete() {
                 
-                return confirm("Are you sure you want to delete the book?");
+                return confirm("Are you sure you want to delete the product?");
                 
             }
             function confirmDelete2() {
                 
-                return confirm("Are you sure you want to delete the author?");
+                return confirm("Are you sure you want to delete the category?");
                 
             }
             function confirmDelete3() {
                 
-                return confirm("Are you sure you want to delete the author?");
+                return confirm("Are you sure you want to delete the type?");
                 
             }
             
@@ -143,6 +143,12 @@
         
         ?>
             </div>
+
+            <p>
+              <a class="btn btn-primary" id="getData" data-toggle="collapse" href="#Agg" role="button" aria-expanded="false" aria-controls="Agg">
+                Data Analysis 
+              </a>
+            </p>
             <div class="collapse" id="Agg">
             </div>
             
