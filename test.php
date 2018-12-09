@@ -13,7 +13,7 @@
     <body class = 'bg-info'>
                 <h2>Customer Check Out</h2>
                 
-                <form enctype="text/plain">
+                <form action="submitCheckout.php" method="post">
                 <div class="form-group">
                     <label for="firstName"><strong>First Name</strong></label>
                     <input type="text" class="form-control" name="firstName" id="firstName" placeholder="First Name">
@@ -36,7 +36,7 @@
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email">
                 </div>
                 
-                <input type="button" name ="checkout" value="checkout" id="checkout" class="btn btn-outline-danger">
+                <input type="submit" name ="checkout" value="checkout" id="checkout" class="btn btn-outline-danger">
                 </form><br />
                 
         <script src="js/js.js"></script>
