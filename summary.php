@@ -109,14 +109,13 @@
                     <input type="text" class="form-control" name="email" id="email" placeholder="Email">
                 </div>
                 
-                <input type="submit" name ="checkout" value="checkout" id="checkout" class="btn btn-outline-danger">
+                <input type="button" name ="checkout" value="checkout" id="checkout" class="btn btn-outline-danger">
                 </form><br />
                 
                 
             <script>
     
             $(document).ready(function(){
-            alert(hi);
             $("#checkout").click(function(){
             
                 $.ajax({
@@ -135,7 +134,7 @@
                         alert(data.firstName);
                     },
                     complete: function(data) { //optional, used for debugging purposes
-                    //alert(status);
+                    alert(status);
                     }
                 });//ajax
             });
