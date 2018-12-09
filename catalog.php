@@ -90,7 +90,7 @@ function displaySearchResults() {
             echo "<form method='post'>";
             echo "<input type='hidden' name='productName' value='$productName'>";
             echo "<input type='hidden' name='price' value='$price'>";
-            echo "<input type='hidden' name='$productImage' value='$productImage'>";
+            echo "<input type='hidden' name='productImage' value='$productImage'>";
             echo "<input type='hidden' name='productId' value='$productId'>";
             
             if($_POST['productId'] == $productId) {
