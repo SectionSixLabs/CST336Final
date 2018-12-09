@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'connect.php';
+include 'dbConnection.php';
 $connect = getDatabaseConnection();
 
 //Data for is_user
