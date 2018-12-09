@@ -130,7 +130,7 @@
                     },
                     success: function(data) {
 
-                        alert(data);
+                        alert(JSON.stringify(data));
                     },
                     complete: function(data) { //optional, used for debugging purposes
                     //alert(status);
