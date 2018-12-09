@@ -116,7 +116,7 @@
             <script>
     
             $(document).ready(function(){
-            alert(hi);
+
             $("#checkout").click(function(){
             
                 $.ajax({
