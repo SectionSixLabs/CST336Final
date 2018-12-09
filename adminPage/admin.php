@@ -114,6 +114,7 @@
             echo "<table class='table table-hover'>";
             echo "<thead>
                     <tr>
+                        <th scope-'col'>Image</th>
                         <th scope='col'>ID</th>
                         <th scope='col'>Name</th>
                         <th scope='col'>Description</th>
@@ -124,8 +125,9 @@
                     </thead>";
             echo "<tbody>";
             foreach($records as $record) {
-                
+                $productImage = $record['productImage'];
                 echo "<tr>";
+                echo "<td><img src='../img/$productImage' width='150'></td>";
                 echo "<td>" . $record['productId'] . "</td>";
                 echo "<td>" . $record['productName'] . "</td>";
                 echo "<td>" . $record['productDescription'] . "</td>";
