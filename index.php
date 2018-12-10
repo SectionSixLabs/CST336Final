@@ -91,7 +91,7 @@
                 <img class="d-inline w-40 " src="img/nengonengoisland.jpg" alt = "Fourth Slide">
               </div>
                           <div class="carousel-item">
-                <img class="d-inline w-40 " src="img/rangyaiisland" alt = "Fifth Slide">
+                <img class="d-inline w-40 " src="img/rangyaiisland.jpg" alt = "Fifth Slide">
               </div>
                           <div class="carousel-item">
                 <img class="d-inline w-40 " src="img/schulzewerderisland.jpg" alt = "Sixth Slide">
