@@ -28,7 +28,7 @@ if(isset($_POST['productName'])) {
 function displaySearchResults() {
     global $conn;
     
-    if(isset($_GET['searchForm'])) { //check if user has submitted form
+    //if(isset($_GET['searchForm'])) { //check if user has submitted form
         echo "<h3>Products Found: </h3>";
         
         $namedParameters = array();
@@ -104,7 +104,7 @@ function displaySearchResults() {
             echo "</tr>";
         }
         echo "</table></div>";
-    }
+    //}
 }
 
 ?>
@@ -255,10 +255,10 @@ function displaySearchResults() {
             </div>
             
             <div>
-            <?= displaySearchResults() ?>
+            <?php displaySearchResults() ?>
             </div>
         
-                <script>
+            <script>
     
             $(document).ready(function(){
     
