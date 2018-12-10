@@ -71,7 +71,7 @@ function displaySearchResults() {
         $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         //echo "<div>$sql</div>";
-        
+        echo "<div class='table-responsive'>";
         echo "<hr><table class='table'>";
         
         foreach($records as $record) {
@@ -81,11 +81,11 @@ function displaySearchResults() {
             $productId = $record["productId"];
         
             echo "<tr>";
-            echo "<td>";
+            echo "<td scope='col'>";
             echo "<img src='img/$productImage' height='200' width='300'>" ." <a href='#' class='productLink' productId=$productId>". $productName . "</a> " . $record["productDescription"] . " $" . $price . "<br /><br />";
             echo "</td>";
         
-            echo "<td>";
+            echo "<td scope='col'>";
             //hidden input element containing item 
             echo "<form method='post'>";
             echo "<input type='hidden' name='productName' value='$productName'>";
@@ -103,7 +103,7 @@ function displaySearchResults() {
             echo "</td>";
             echo "</tr>";
         }
-        echo "</table>";
+        echo "</table></div>";
     }
 }
 
