@@ -78,9 +78,7 @@
                 <?php
                     displayCart();
                 ?>
-                <!-- Cart Items -->
-                <hr><form method='post'><input type='hidden' name='clearCart' value='true'><button class='btn btn-outline-danger'>Clear Cart</button></form><br />
-                <form method='post' action="summary.php"><input type='hidden' name='summary' value='true'><button class='btn btn-outline-warning'>Summary</button></form>
+
                 <script>
     
             $(document).ready(function(){

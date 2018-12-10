@@ -25,6 +25,14 @@ function displayCart() {
             echo "</tr>";
         }
         echo "</table>";
+        echo "<!-- Cart Items -->";
+        echo "<hr><form method='post'><input type='hidden' name='clearCart' value='true'><button class='btn btn-outline-danger'>Clear Cart</button></form><br />";
+        echo "<form method='post' action='summary.php'><input type='hidden' name='summary' value='true'><button class='btn btn-outline-warning'>Check out</button></form>";   
+                
+    } else {
+        echo "<h1>Your cart is empty</h1><br />"; 
+        echo "<h2>Please add some products</h2>"; 
+        
     }
 }
 

@@ -2,6 +2,8 @@
 
     include 'functions.php';
     session_start();
+    
+    $inCart =count($_SESSION['cart']);  
 
     //If 'removeId' has been sent, search the cart for that productName and unset it
     if(isset($_POST['removeId'])) {
@@ -74,7 +76,7 @@
                 
                 <!-- Bootstrap Navagation Bar -->
                 <br /> <br /> <br />
-                <h2>Summary</h2>
+                <h2>Ready for Check out</h2>
                 <?php
                     displayCart();
                 ?>
