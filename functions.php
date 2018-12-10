@@ -2,7 +2,7 @@
 
 function displayCart() {
     // if there are islands in the Session, display them
-    if(isset($_SESSION['cart'])) {
+    if(isset($_SESSION['cart']) && count($_SESSION['cart'])>0) {
         echo "<table class='table'>";
         foreach($_SESSION['cart'] as $item) {
             $productId = $item['productId'];
