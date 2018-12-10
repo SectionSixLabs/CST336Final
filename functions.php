@@ -32,6 +32,7 @@ function displayCart() {
     } else {
         echo "<h1>Your cart is empty</h1><br />"; 
         echo "<h2>Please add some products</h2>"; 
+        echo "<a href='catalog.php' class='btn btn-primary btn-lg active' role='button' aria-pressed='true'>Go to Catalog</a>"; 
         
     }
 }
