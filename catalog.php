@@ -82,7 +82,9 @@ function displaySearchResults() {
         
             echo "<tr>";
             echo "<td scope='col'>";
-            echo "<img src='img/$productImage' height='200' width='300'>" ." <a href='#' class='productLink' productId=$productId>". $productName . "</a> " . $record["productDescription"] . " $" . $price . "<br /><br />";
+            echo "<img src='img/$productImage' height='200' width='300'></td>";
+            echo "<td scope='col'>";
+            echo " <a href='#' class='productLink' productId=$productId>". $productName . "</a> " . $record["productDescription"] . " $" . $price . "<br /><br />";
             echo "</td>";
         
             echo "<td scope='col'>";
