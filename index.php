@@ -82,19 +82,19 @@
               <img class="d-inline w-40" src="img/baronisland.jpg" alt="First slide">
             </div>
                           <div class="carousel-item">
-                <img class="d-inline w-40 " src="img/kandooisland.jpg" alt = "First Slide">
+                <img class="d-inline w-40 " src="img/kandooisland.jpg" alt = "Second Slide">
               </div>
                           <div class="carousel-item">
-                <img class="d-inline w-40 " src="img/Mamanucaisland.jpg" alt = "First Slide">
+                <img class="d-inline w-40 " src="img/Mamanucaisland.jpg" alt = "Third Slide">
               </div>
                           <div class="carousel-item">
-                <img class="d-inline w-40 " src="img/nengonengoisland.jpg" alt = "First Slide">
+                <img class="d-inline w-40 " src="img/nengonengoisland.jpg" alt = "Fourth Slide">
               </div>
                           <div class="carousel-item">
-                <img class="d-inline w-40 " src="img/rangyaiisland" alt = "First Slide">
+                <img class="d-inline w-40 " src="img/rangyaiisland" alt = "Fifth Slide">
               </div>
                           <div class="carousel-item">
-                <img class="d-inline w-40 " src="img/schulzewerderisland.jpg" alt = "First Slide">
+                <img class="d-inline w-40 " src="img/schulzewerderisland.jpg" alt = "Sixth Slide">
               </div>
                       </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
